@@ -1,1 +1,8 @@
+# Carpetas #
 /node_modules/
+
+# Configuración #
+package-lock.json
+
+# Logs #
+*.log
