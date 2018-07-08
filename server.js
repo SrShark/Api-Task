@@ -2,12 +2,29 @@
 import express from 'express'
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
+
+let tasks = [
+  {
+    id: 1,
+    description: "hola"
+  }
+]
 
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  res.send('Inicio')
 })
 
-app. listen(port, () => {
-  console.log(`server on localhost:${port}`)
+//TODO description: 'undefined'
+app.post('/api/task', (res, req) => {
+  const task = {
+    id: tasks.length + 1,
+    description: req.body.description
+  }
+
+  tasks.push(task)
+
+  res.send(tasks)
 })
+
+app.listen(port, () => console.log(`server on localhost:${port}`))
